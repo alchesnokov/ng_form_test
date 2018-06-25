@@ -1,0 +1,38 @@
+<form class="form" novalidate>
+  <h2>Форма отправки данных</h2>
+  <div class="form__group">
+    <label class="form__label" for="url">URL:</label>
+    <input class="form__control" type="url" name="URL" id="url" required>
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="name">ФИО:</label>
+    <input class="form__control" type="text" name="ФИО" id="name" required>
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="email">Email:</label>
+    <input class="form__control" type="email" name="Email" id="email" required>
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="phone">Телефон:</label>
+    <input class="form__control" type="tel" name="Телефон" id="phone" required>
+  </div>
+  <div class="form__group">
+    Пол:
+    <label class="form__label" for="male">Мужской</label>
+    <input type="radio" name="Мужской" id="male" required>
+    <label class="form__label" for="female" required>Женский</label>
+    <input type="radio" name="Женский" id="female">
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="password">Пароль:</label>
+    <input class="form__control" type="password" name="Пароль" id="password" required minlength="6">
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="confirmPassword">Подтвердить пароль:</label>
+    <input class="form__control" type="password" name="Пароль" id="confirmPassword" required minlength="6">
+  </div>
+  <button class="form__button">Отправить</button>
+  <p class="form__alert form_success">Данные отправлены успешно!</p>
+  <p class="form__alert form_error">Ошибка отправки данных!</p>
+</form>
+
