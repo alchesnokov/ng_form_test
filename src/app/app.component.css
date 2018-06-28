@@ -19,8 +19,12 @@
   border-radius: 3px;
 }
 
-.form__control.ng-touched {
+.form__control.ng-dirty.ng-invalid {
   border: 1px solid #CC0000;
+}
+
+.form__control.ng-valid {
+  border: 1px solid #0F9E5E;
 }
 
 .form__button {
