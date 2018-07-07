@@ -1,61 +1,47 @@
-<form class="form" [formGroup]='testForm'>
+<form class="form" [formGroup]='testForm' autocomplete="off">
 
   <h2>Форма отправки данных</h2>
 
-  <div class="form__group">
-    <label class="form__label" for="url">URL:</label>
-    <input class="form__control" type="text" formControlName="url" name="URL" id="url">
-    <div class="form_error" *ngIf="testForm.controls['url'].invalid && testForm.controls['url'].dirty">{{alert}}</div>
-  </div>
+  <mat-form-field>
+    <input matInput placeholder="URL" type="text" formControlName="url">
+    <mat-error *ngIf="testForm.controls['url'].invalid && testForm.controls['url'].dirty">{{alert}}</mat-error>
+  </mat-form-field>
 
-  <div class="form__group">
-    <label class="form__label" for="name">ФИО:</label>
-    <input class="form__control" type="text" formControlName="name" name="ФИО" id="name">
-    <div class="form_error" *ngIf="testForm.controls['name'].invalid && testForm.controls['name'].dirty">
+  <mat-form-field>
+    <input matInput placeholder="ФИО" type="text" formControlName="name">
+    <mat-error *ngIf="testForm.controls['name'].invalid && testForm.controls['name'].dirty">
       Только русские буквы
-    </div>
-  </div>
+    </mat-error>
+  </mat-form-field>
 
-  <div class="form__group">
-    <label class="form__label" for="email">Email:</label>
-    <input class="form__control" type="text" formControlName="email" name="Email" id="email">
-    <div class="form_error" *ngIf="testForm.controls['email'].invalid && testForm.controls['email'].dirty">{{alert}}
-    </div>
-  </div>
+  <mat-form-field>
+    <input matInput placeholder="Email" type="text" formControlName="email">
+    <mat-error *ngIf="testForm.controls['email'].invalid && testForm.controls['email'].dirty">{{alert}}
+    </mat-error>
+  </mat-form-field>
 
-  <div class="form__group">
-    <label class="form__label" for="phone">Телефон:</label>
-    <input class="form__control" type="text" formControlName="phone" name="Телефон" id="phone">
-    <div class="form_error" *ngIf="testForm.controls['phone'].invalid && testForm.controls['phone'].dirty">{{alert}}
-    </div>
-  </div>
+  <mat-form-field>
+    <input matInput placeholder="Телефон" type="text" formControlName="phone">
+    <mat-error *ngIf="testForm.controls['phone'].invalid && testForm.controls['phone'].dirty">Только цифры</mat-error>
+  </mat-form-field>
 
-  <div class="form__group">
-    Пол:
-    <label class="form__label" for="male">Мужской</label>
-    <input type="radio" name="Мужской" id="male">
-    <label class="form__label" for="female">Женский</label>
-    <input type="radio" name="Женский" id="female">
-  </div>
+  <mat-radio-group>
+    <label>Выберите пол: </label>
+    <mat-radio-button value="1">Мужской</mat-radio-button>
+    <mat-radio-button value="2">Женский</mat-radio-button>
+  </mat-radio-group>
 
-  <div class="form__group">
-    <label class="form__label" for="password">Пароль:</label>
-    <input class="form__control" type="password" formControlName="password" name="Пароль" id="password">
-    <div class="form_error" *ngIf="testForm.controls['password'].invalid && testForm.controls['password'].dirty">
-      Минимум 6 символов
-    </div>
-  </div>
+  <mat-form-field hintLabel="Минимум 6 символов">
+    <input matInput placeholder="Пароль" type="password" formControlName="password">
+    <mat-error *ngIf="testForm.controls['password'].invalid">{{alert}}</mat-error>
+  </mat-form-field>
 
-  <div class="form__group">
-    <label class="form__label" for="confirmPassword">Подтвердить пароль:</label>
-    <input class="form__control" type="password" formControlName="confirmPassword" name="Пароль" id="confirmPassword">
-    <div class="form_error"
-         *ngIf="testForm.controls['confirmPassword'].invalid && testForm.controls['confirmPassword'].dirty">
-      Минимум 6 символов
-    </div>
-  </div>
+  <mat-form-field hintLabel="Минимум 6 символов">
+    <input matInput placeholder="Подтвердить пароль" type="password" formControlName="confirmPassword">
+    <mat-error *ngIf="testForm.controls['confirmPassword'].invalid">{{alert}}</mat-error>
+  </mat-form-field>
 
-  <button class="form__button" type="submit">Отправить</button>
+  <button mat-raised-button color="primary" type="submit">Отправить</button>
 
   <pre>{{testForm.value | json}}</pre>
 

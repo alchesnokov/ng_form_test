@@ -11,12 +11,6 @@ import {group} from "@angular/animations";
 export class AppComponent {
 
   testForm: FormGroup;
-  // url: string;
-  // name: string;
-  // email: string;
-  // phone: number;
-  // password: string;
-  // confirmPassword: string;
 
   constructor (formBuilder: FormBuilder) {
     this.testForm = formBuilder.group(
@@ -24,7 +18,7 @@ export class AppComponent {
         'url': [null, Validators.required],
         'name': [null, [Validators.required, Validators.pattern(/[А-я]/)]],
         'email': [null, [Validators.required, Validators.email]],
-        'phone': [null, [Validators.required]],
+        'phone': [null, [Validators.required, Validators.pattern('[0-9]+')]],
         'password': [null, [Validators.required, Validators.minLength(6)]],
         'confirmPassword': [null, [Validators.required, Validators.minLength(6)]]
       }
