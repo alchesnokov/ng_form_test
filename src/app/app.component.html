@@ -25,7 +25,7 @@
     <mat-error *ngIf="testForm.controls['phone'].invalid && testForm.controls['phone'].dirty">Только цифры</mat-error>
   </mat-form-field>
 
-  <mat-radio-group class="h-mt_10">
+  <mat-radio-group class="h-mt_10" formControlName="gender">
     <label class="h-mr_10">Выберите пол: </label>
     <mat-radio-button class="h-mr_10" value="male">Мужской</mat-radio-button>
     <mat-radio-button value="female">Женский</mat-radio-button>

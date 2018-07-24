@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl} from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ export class AppComponent {
 
   testForm: FormGroup;
 
-  constructor (fb: FormBuilder) {
+  constructor(fb: FormBuilder) {
     this.testForm = fb.group(
       {
         'url': [null, Validators.required],
@@ -30,12 +30,8 @@ export class AppComponent {
   equalPassword(ac: AbstractControl) {
     let password = ac.get('password').value;
     let confirmPassword = ac.get('confirmPassword').value;
-    if(password != confirmPassword) {
-      console.log('false');
-      ac.get('confirmPassword').setErrors( {equalPassword: true} )
-    } else {
-      console.log('true');
-      return null
+    if (password != confirmPassword) {
+      ac.get('confirmPassword').setErrors({equalPassword: true})
     }
   }
 
