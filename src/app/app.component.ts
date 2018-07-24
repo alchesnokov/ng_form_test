@@ -34,5 +34,14 @@ export class AppComponent {
       ac.get('confirmPassword').setErrors({equalPassword: true})
     }
   }
+  
+  onSubmit() {
+    const controls = this.testForm.controls;
+    if (this.testForm.invalid) {
+      Object.keys(controls).forEach(controlName => controls[controlName].markAsTouched());
+      return;
+    }
+    console.log(this.testForm.value);
+  }
 
 }
