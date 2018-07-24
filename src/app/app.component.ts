@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormBuilder, Validators, ValidatorFn} from '@angular/forms';
-import {group} from "@angular/animations";
+import {FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,25 +11,32 @@ export class AppComponent {
 
   testForm: FormGroup;
 
-  constructor (formBuilder: FormBuilder) {
-    this.testForm = formBuilder.group(
+  constructor (fb: FormBuilder) {
+    this.testForm = fb.group(
       {
         'url': [null, Validators.required],
         'name': [null, [Validators.required, Validators.pattern(/[А-я]/)]],
         'email': [null, [Validators.required, Validators.email]],
         'phone': [null, [Validators.required, Validators.pattern('[0-9]+')]],
+        'gender': [null, [Validators.required]],
         'password': [null, [Validators.required, Validators.minLength(6)]],
         'confirmPassword': [null, [Validators.required, Validators.minLength(6)]]
-      }
+      }, {validator: this.equalPassword}
     )
   }
 
-  alert: string = 'Поле заполнено неверно';
+  error: string = 'Поле заполнено неверно';
 
-  // private passwordEqual() {
-  //   if (this.testForm === group.get('confirmPassword').value) {
-  //     return null
-  //   } else {this.alert}
-  // }
+  equalPassword(ac: AbstractControl) {
+    let password = ac.get('password').value;
+    let confirmPassword = ac.get('confirmPassword').value;
+    if(password != confirmPassword) {
+      console.log('false');
+      ac.get('confirmPassword').setErrors( {equalPassword: true} )
+    } else {
+      console.log('true');
+      return null
+    }
+  }
 
 }

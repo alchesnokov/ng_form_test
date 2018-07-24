@@ -4,7 +4,7 @@
 
   <mat-form-field>
     <input matInput placeholder="URL" type="text" formControlName="url">
-    <mat-error *ngIf="testForm.controls['url'].invalid && testForm.controls['url'].dirty">{{alert}}</mat-error>
+    <mat-error *ngIf="testForm.controls['url'].invalid && testForm.controls['url'].dirty">{{error}}</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -16,7 +16,7 @@
 
   <mat-form-field>
     <input matInput placeholder="Email" type="text" formControlName="email">
-    <mat-error *ngIf="testForm.controls['email'].invalid && testForm.controls['email'].dirty">{{alert}}
+    <mat-error *ngIf="testForm.controls['email'].invalid && testForm.controls['email'].dirty">{{error}}
     </mat-error>
   </mat-form-field>
 
@@ -25,23 +25,23 @@
     <mat-error *ngIf="testForm.controls['phone'].invalid && testForm.controls['phone'].dirty">Только цифры</mat-error>
   </mat-form-field>
 
-  <mat-radio-group>
-    <label>Выберите пол: </label>
-    <mat-radio-button value="1">Мужской</mat-radio-button>
-    <mat-radio-button value="2">Женский</mat-radio-button>
+  <mat-radio-group class="h-mt_10">
+    <label class="h-mr_10">Выберите пол: </label>
+    <mat-radio-button class="h-mr_10" value="male">Мужской</mat-radio-button>
+    <mat-radio-button value="female">Женский</mat-radio-button>
   </mat-radio-group>
 
-  <mat-form-field hintLabel="Минимум 6 символов">
+  <mat-form-field>
     <input matInput placeholder="Пароль" type="password" formControlName="password">
-    <mat-error *ngIf="testForm.controls['password'].invalid">{{alert}}</mat-error>
+    <mat-error *ngIf="testForm.controls['password'].invalid">Минимум 6 символов</mat-error>
   </mat-form-field>
 
-  <mat-form-field hintLabel="Минимум 6 символов">
+  <mat-form-field>
     <input matInput placeholder="Подтвердить пароль" type="password" formControlName="confirmPassword">
-    <mat-error *ngIf="testForm.controls['confirmPassword'].invalid">{{alert}}</mat-error>
+    <mat-error *ngIf="testForm.controls['confirmPassword'].errors?.equalPassword">Пароли не совпадают</mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Отправить</button>
+  <button class="h-mt_10" mat-raised-button color="primary" type="submit">Отправить</button>
 
   <pre>{{testForm.value | json}}</pre>
 

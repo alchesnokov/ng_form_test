@@ -12,3 +12,15 @@ h2 {
 button {
   align-self: center;
 }
+
+.h-mr_10 {
+  margin-right: 10px;
+}
+
+.h-mt_10 {
+  margin-top: 10px;
+}
+
+.h-mb_10 {
+  margin-bottom: 10px;
+}
